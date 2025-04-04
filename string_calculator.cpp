@@ -15,7 +15,7 @@
              if (isdigit(numbers[i]))
              {
                 int temp = 0;
-                while (numbers[i] != ',' && i < numbers.size())
+                while (isdigit(numbers[i] != ',') && i < numbers.size())
                 {
                     temp = temp * 10;
                     temp += (numbers[i] - '0');
@@ -27,6 +27,8 @@
              }
              if (numbers[i] <= 'z' && numbers[i] >= 'a')
              {
+                if (numbers[i] == 'n' && numbers[i - 1] == '/')
+                     continue;
                  ans += numbers[i] - '`';
              }
              if (numbers[i] == '-' && isdigit(numbers[++i]))
@@ -67,7 +69,7 @@
     {
         StringCalculator s1;
  
-        vector<string> numbers = {"0", "1,2,3", "123,432,56", "1,2,a,b", "-1,2,4,d,-6", "12003,1,3", "34/n54,89"};
+        vector<string> numbers = {"0", "1,2,3", "123,432,56", "1,2,a,b", "-1,2,4,d,-6", "2,1001", "1/n2,3"};
         for (string str : numbers)
         {
             cout << s1.addString(str) << endl;
