@@ -3,6 +3,9 @@
  
  class StringCalculator
  {
+    private:
+     bool isneg = false;
+     vector<int> neg;
  public:
      int addString(string numbers)
      {
@@ -34,9 +37,25 @@
                      i++;
                  }
                  temp -= 2 * temp;
-                 cout << "Negatives are Not Allowed ";
-                 return temp;
+                 neg.push_back(temp);
+                 while (numbers[i + 1] != '-' && i < numbers.size())
+                 {
+                     i++;
+                 }
              }
+         }
+ 
+         if (isneg)
+         {
+             cout << "Negatives are not allowed ";
+             for (int i = 0; i < neg.size() - 1; i++)
+             {
+                 cout << neg[i] << ",";
+             }
+             isneg = false;
+             int lastel = neg[neg.size() - 1];
+             neg.clear();
+             return lastel;
             }
             return ans;
         }
